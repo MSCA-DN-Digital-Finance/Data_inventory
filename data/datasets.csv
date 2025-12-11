@@ -1,1 +1,2 @@
 dataset_name,short_description,subjects,IRP,frequency,first_date,last_date,clean,availability
+EIA_core_861, "EIA form 861 contains operational data of the american electricity grid, including demand, demand forecast and generation by balancing authority.","electricity;energy",14,Hourly,2019,up-to-date,Some missing values,Open
