@@ -9,12 +9,12 @@ Please edit `data-inventory.csv`, not the tables below.
 
 _This section is auto-generated from `data-sources.csv` and `datasets.csv`. Please edit those CSV files instead of the tables below._
 
-## Table of Contents
+## 🧭 Table of Contents
 
-- [Data Sources – Full List](#data-sources-full-list)
+- [Data Sources – Full List ](#data-sources-full-list)
 - [Data Sources by Subject ](#data-sources-by-subject)
   - [banking ](#sources-banking)
-  - [blockchain](#sources-blockchain)
+  - [blockchain ](#sources-blockchain)
   - [credit ](#sources-credit)
   - [cryptocurrencies ](#sources-cryptocurrencies)
   - [electricity ](#sources-electricity)
@@ -64,7 +64,7 @@ _This section is auto-generated from `data-sources.csv` and `datasets.csv`. Plea
 | Banca d'Italia | Data from the Italian central bank (monetary, financial, balance of payments, banking system) | 14 | https://infostat.bancaditalia.it/inquiry/home?spyglass/taxo:CUBESET=&ITEMSELEZ=&OPEN=true/&ep:LC=EN&COMM=BANKITALIA&ENV=LIVE&CTX=DIFF&IDX=1&/view:CUBEIDS=&graphMode= | Public | API / open |
 
 
-### blockchain <a name='sources-blockchainaa'></a>
+### blockchain <a name='sources-blockchain'></a>
 
 | Name | Short Description | IRP | Link | Access | Collection |
 |---|---|---|---|---|---|
