@@ -1,4 +1,9 @@
 dataset_name,short_description,subjects,IRP,frequency,first_date,last_date,clean,availability
 EIA_930,"EIA form 930 contains operational data of the american electricity grid including demand, demand forecast and generation by balancing authority.","electricity",14,Hourly,2019,up-to-date,Some missing values,Download parquet from PUDL
 EIA_923,"EIA form 923 contains monthly data on power generation in US, including net generation, fuel receipts and retail sales by state.","electricity;energy",14,Monthly,2001,up-to-date,Some missing values,Ask
-BI_TDB20224,"Bank of Italy table 20224 contains data on loan origination, excluding bad loans, by region and sector in Italy","credit;banking",14,Monthly,2011,updated with 3 months lag,Clean,Ask
+BI_loan_origination,"Bank of Italy table 20224 contains data on loan origination, excluding bad loans, by region and sector in Italy","credit;banking",14,Monthly,2011,updated with 3 months lag,Clean,Ask
+BI_bad_loans,"Bank of Italy table, data on bad loan amounts, by region and sector in Italy","credit;banking",14,Monthly,2011,updated with 3 months lag,Some missing values,Ask
+BI_nace,"Bank of Italy data on loan origination, by NACE classification and sector, Italy level only","credit;banking",14,Monthly,2006,updtated with 3 months lag,Some missing values,Ask
+EIA_outlook,"EIA Annual Energy Outlook provides projection of future energy variables including prices,load and generation based on 11 scenarios. The forecast method is open-source","energy;electricity;macro-economy",14,Yearly,2023,2050,Clean,Ask
+EIA_capacity,"Capacity data aggregated from EIA plant-level dataset, infering capacity from nameplate capacity of all operating plants within each balancing authority.","energy;electricity",14,Yearly,2001,2025,Clean,Ask
+EPA_CEMS,"hourly continuous emissions monitoring system data. CO2,SO2,NOx emissions, plant level granularity.","energy;environment",14,Hourly,1995,up-to-date,Clean,Download parquet from PUDL
