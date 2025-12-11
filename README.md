@@ -1,15 +1,17 @@
-# 🗂 Data Inventory
+# MSCA DIGITAL - 🗂 Data Inventory
 
-This README is generated from `data-inventory.csv`.
-Please edit `data-inventory.csv`, not the tables below.
+This repository is meant to host a list of relevant data sources and datasets found and used by IRPs. 
+
+IRPs are welcome to add their contributions in the following csv files :
+
+
+- [List of datasets](./data/datasets.csv) 
+- [List of data sources](./data/data-sources.csv)
+
+The README is automatically generated, please do not edit it directly. 
 
 <!-- BEGIN INVENTORY -->
-# Data Inventory
-
-
-_This section is auto-generated from `data-sources.csv` and `datasets.csv`. Please edit those CSV files instead of the tables below._
-
-## 🧭 Table of Contents
+## Table of Contents
 
 - [Data Sources – Full List ](#data-sources-full-list)
 - [Data Sources by Subject ](#data-sources-by-subject)

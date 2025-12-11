@@ -333,8 +333,6 @@ def build_inventory_markdown():
 
     # First build full content WITHOUT TOC to detect headings
     body_without_toc = (
-        f"{intro_heading}\n\n"
-        f"{intro_text}\n\n"
         "---\n\n"
         f"{data_sources_md}\n\n"
         "---\n\n"
@@ -345,9 +343,7 @@ def build_inventory_markdown():
 
     # Now assemble final content with TOC inserted after intro
     final_md = (
-        f"{intro_heading}\n\n"
-        f"{intro_text}\n\n"
-        "## 🧭 Table of Contents\n\n"
+        "## Table of Contents\n\n"
         f"{toc}\n\n"
         "---\n\n"
         f"{data_sources_md}\n\n"
