@@ -37,6 +37,8 @@ The README is automatically generated, please do not edit it directly.
   - [credit ](#sets-credit)
   - [electricity ](#sets-electricity)
   - [energy ](#sets-energy)
+  - [environment ](#sets-environment)
+  - [macro-economy ](#sets-macro-economy)
 - [Datasets by IRP ](#datasets-by-irp)
   - [IRP 14 ](#sets-14)
 
@@ -211,9 +213,14 @@ The README is automatically generated, please do not edit it directly.
 
 | Dataset Name | Short Description | Subject(s) | IRP | Frequency | First Date | Last Date | Clean | Availability |
 |---|---|---|---|---|---|---|---|---|
-| BI_TDB20224 | Bank of Italy table 20224 contains data on loan origination, excluding bad loans, by region and sector in Italy | credit;banking | 14 | Monthly | 2011 | updated with 3 months lag | Clean | Ask |
+| BI_bad_loans | Bank of Italy table, data on bad loan amounts, by region and sector in Italy | credit;banking | 14 | Monthly | 2011 | updated with 3 months lag | Some missing values | Ask |
+| BI_loan_origination | Bank of Italy table 20224 contains data on loan origination, excluding bad loans, by region and sector in Italy | credit;banking | 14 | Monthly | 2011 | updated with 3 months lag | Clean | Ask |
+| BI_nace | Bank of Italy data on loan origination, by NACE classification and sector, Italy level only | credit;banking | 14 | Monthly | 2006 | updtated with 3 months lag | Some missing values | Ask |
 | EIA_923 | EIA form 923 contains monthly data on power generation in US, including net generation, fuel receipts and retail sales by state. | electricity;energy | 14 | Monthly | 2001 | up-to-date | Some missing values | Ask |
 | EIA_930 | EIA form 930 contains operational data of the american electricity grid including demand, demand forecast and generation by balancing authority. | electricity | 14 | Hourly | 2019 | up-to-date | Some missing values | Download parquet from PUDL |
+| EIA_capacity | Capacity data aggregated from EIA plant-level dataset, infering capacity from nameplate capacity of all operating plants within each balancing authority. | energy;electricity | 14 | Yearly | 2001 | 2025 | Clean | Ask |
+| EIA_outlook | EIA Annual Energy Outlook provides projection of future energy variables including prices,load and generation based on 11 scenarios. The forecast method is open-source | energy;electricity;macro-economy | 14 | Yearly | 2023 | 2050 | Clean | Ask |
+| EPA_CEMS | hourly continuous emissions monitoring system data. CO2,SO2,NOx emissions, plant level granularity. | energy;environment | 14 | Hourly | 1995 | up-to-date | Clean | Download parquet from PUDL |
 
 
 ## Datasets by Subject <a name='datasets-by-subject'></a>
@@ -223,14 +230,18 @@ The README is automatically generated, please do not edit it directly.
 
 | Dataset Name | Short Description | IRP | Frequency | First Date | Last Date | Clean | Availability |
 |---|---|---|---|---|---|---|---|
-| BI_TDB20224 | Bank of Italy table 20224 contains data on loan origination, excluding bad loans, by region and sector in Italy | 14 | Monthly | 2011 | updated with 3 months lag | Clean | Ask |
+| BI_bad_loans | Bank of Italy table, data on bad loan amounts, by region and sector in Italy | 14 | Monthly | 2011 | updated with 3 months lag | Some missing values | Ask |
+| BI_loan_origination | Bank of Italy table 20224 contains data on loan origination, excluding bad loans, by region and sector in Italy | 14 | Monthly | 2011 | updated with 3 months lag | Clean | Ask |
+| BI_nace | Bank of Italy data on loan origination, by NACE classification and sector, Italy level only | 14 | Monthly | 2006 | updtated with 3 months lag | Some missing values | Ask |
 
 
 ### credit <a name='sets-credit'></a>
 
 | Dataset Name | Short Description | IRP | Frequency | First Date | Last Date | Clean | Availability |
 |---|---|---|---|---|---|---|---|
-| BI_TDB20224 | Bank of Italy table 20224 contains data on loan origination, excluding bad loans, by region and sector in Italy | 14 | Monthly | 2011 | updated with 3 months lag | Clean | Ask |
+| BI_bad_loans | Bank of Italy table, data on bad loan amounts, by region and sector in Italy | 14 | Monthly | 2011 | updated with 3 months lag | Some missing values | Ask |
+| BI_loan_origination | Bank of Italy table 20224 contains data on loan origination, excluding bad loans, by region and sector in Italy | 14 | Monthly | 2011 | updated with 3 months lag | Clean | Ask |
+| BI_nace | Bank of Italy data on loan origination, by NACE classification and sector, Italy level only | 14 | Monthly | 2006 | updtated with 3 months lag | Some missing values | Ask |
 
 
 ### electricity <a name='sets-electricity'></a>
@@ -239,6 +250,8 @@ The README is automatically generated, please do not edit it directly.
 |---|---|---|---|---|---|---|---|
 | EIA_923 | EIA form 923 contains monthly data on power generation in US, including net generation, fuel receipts and retail sales by state. | 14 | Monthly | 2001 | up-to-date | Some missing values | Ask |
 | EIA_930 | EIA form 930 contains operational data of the american electricity grid including demand, demand forecast and generation by balancing authority. | 14 | Hourly | 2019 | up-to-date | Some missing values | Download parquet from PUDL |
+| EIA_capacity | Capacity data aggregated from EIA plant-level dataset, infering capacity from nameplate capacity of all operating plants within each balancing authority. | 14 | Yearly | 2001 | 2025 | Clean | Ask |
+| EIA_outlook | EIA Annual Energy Outlook provides projection of future energy variables including prices,load and generation based on 11 scenarios. The forecast method is open-source | 14 | Yearly | 2023 | 2050 | Clean | Ask |
 
 
 ### energy <a name='sets-energy'></a>
@@ -246,6 +259,23 @@ The README is automatically generated, please do not edit it directly.
 | Dataset Name | Short Description | IRP | Frequency | First Date | Last Date | Clean | Availability |
 |---|---|---|---|---|---|---|---|
 | EIA_923 | EIA form 923 contains monthly data on power generation in US, including net generation, fuel receipts and retail sales by state. | 14 | Monthly | 2001 | up-to-date | Some missing values | Ask |
+| EIA_capacity | Capacity data aggregated from EIA plant-level dataset, infering capacity from nameplate capacity of all operating plants within each balancing authority. | 14 | Yearly | 2001 | 2025 | Clean | Ask |
+| EIA_outlook | EIA Annual Energy Outlook provides projection of future energy variables including prices,load and generation based on 11 scenarios. The forecast method is open-source | 14 | Yearly | 2023 | 2050 | Clean | Ask |
+| EPA_CEMS | hourly continuous emissions monitoring system data. CO2,SO2,NOx emissions, plant level granularity. | 14 | Hourly | 1995 | up-to-date | Clean | Download parquet from PUDL |
+
+
+### environment <a name='sets-environment'></a>
+
+| Dataset Name | Short Description | IRP | Frequency | First Date | Last Date | Clean | Availability |
+|---|---|---|---|---|---|---|---|
+| EPA_CEMS | hourly continuous emissions monitoring system data. CO2,SO2,NOx emissions, plant level granularity. | 14 | Hourly | 1995 | up-to-date | Clean | Download parquet from PUDL |
+
+
+### macro-economy <a name='sets-macro-economy'></a>
+
+| Dataset Name | Short Description | IRP | Frequency | First Date | Last Date | Clean | Availability |
+|---|---|---|---|---|---|---|---|
+| EIA_outlook | EIA Annual Energy Outlook provides projection of future energy variables including prices,load and generation based on 11 scenarios. The forecast method is open-source | 14 | Yearly | 2023 | 2050 | Clean | Ask |
 
 
 ## Datasets by IRP <a name='datasets-by-irp'></a>
@@ -255,7 +285,12 @@ The README is automatically generated, please do not edit it directly.
 
 | Dataset Name | Short Description | Subject(s) | Frequency | First Date | Last Date | Clean | Availability |
 |---|---|---|---|---|---|---|---|
-| BI_TDB20224 | Bank of Italy table 20224 contains data on loan origination, excluding bad loans, by region and sector in Italy | credit;banking | Monthly | 2011 | updated with 3 months lag | Clean | Ask |
+| BI_bad_loans | Bank of Italy table, data on bad loan amounts, by region and sector in Italy | credit;banking | Monthly | 2011 | updated with 3 months lag | Some missing values | Ask |
+| BI_loan_origination | Bank of Italy table 20224 contains data on loan origination, excluding bad loans, by region and sector in Italy | credit;banking | Monthly | 2011 | updated with 3 months lag | Clean | Ask |
+| BI_nace | Bank of Italy data on loan origination, by NACE classification and sector, Italy level only | credit;banking | Monthly | 2006 | updtated with 3 months lag | Some missing values | Ask |
 | EIA_923 | EIA form 923 contains monthly data on power generation in US, including net generation, fuel receipts and retail sales by state. | electricity;energy | Monthly | 2001 | up-to-date | Some missing values | Ask |
 | EIA_930 | EIA form 930 contains operational data of the american electricity grid including demand, demand forecast and generation by balancing authority. | electricity | Hourly | 2019 | up-to-date | Some missing values | Download parquet from PUDL |
+| EIA_capacity | Capacity data aggregated from EIA plant-level dataset, infering capacity from nameplate capacity of all operating plants within each balancing authority. | energy;electricity | Yearly | 2001 | 2025 | Clean | Ask |
+| EIA_outlook | EIA Annual Energy Outlook provides projection of future energy variables including prices,load and generation based on 11 scenarios. The forecast method is open-source | energy;electricity;macro-economy | Yearly | 2023 | 2050 | Clean | Ask |
+| EPA_CEMS | hourly continuous emissions monitoring system data. CO2,SO2,NOx emissions, plant level granularity. | energy;environment | Hourly | 1995 | up-to-date | Clean | Download parquet from PUDL |
 <!-- END INVENTORY -->
