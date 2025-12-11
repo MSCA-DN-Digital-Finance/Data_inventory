@@ -33,6 +33,8 @@ The README is automatically generated, please do not edit it directly.
   - [IRP 14 ](#sources-14)
 - [Datasets – Full List ](#datasets-full-list)
 - [Datasets by Subject ](#datasets-by-subject)
+  - [banking ](#sets-banking)
+  - [credit ](#sets-credit)
   - [electricity ](#sets-electricity)
   - [energy ](#sets-energy)
 - [Datasets by IRP ](#datasets-by-irp)
@@ -209,24 +211,41 @@ The README is automatically generated, please do not edit it directly.
 
 | Dataset Name | Short Description | Subject(s) | IRP | Frequency | First Date | Last Date | Clean | Availability |
 |---|---|---|---|---|---|---|---|---|
-| EIA_core_861 | "EIA form 861 contains operational data of the american electricity grid including demand demand forecast and generation by balancing authority." | electricity;energy | 14 | Hourly | 2019 | up-to-date | Some missing values | Open |
+| BI_TDB20224 | Bank of Italy table 20224 contains data on loan origination, excluding bad loans, by region and sector in Italy | credit;banking | 14 | Monthly | 2011 | updated with 3 months lag | Clean | Ask |
+| EIA_923 | EIA form 923 contains monthly data on power generation in US, including net generation, fuel receipts and retail sales by state. | electricity;energy | 14 | Monthly | 2001 | up-to-date | Some missing values | Ask |
+| EIA_930 | EIA form 930 contains operational data of the american electricity grid including demand, demand forecast and generation by balancing authority. | electricity | 14 | Hourly | 2019 | up-to-date | Some missing values | Download parquet from PUDL |
 
 
 ## Datasets by Subject <a name='datasets-by-subject'></a>
+
+
+### banking <a name='sets-banking'></a>
+
+| Dataset Name | Short Description | IRP | Frequency | First Date | Last Date | Clean | Availability |
+|---|---|---|---|---|---|---|---|
+| BI_TDB20224 | Bank of Italy table 20224 contains data on loan origination, excluding bad loans, by region and sector in Italy | 14 | Monthly | 2011 | updated with 3 months lag | Clean | Ask |
+
+
+### credit <a name='sets-credit'></a>
+
+| Dataset Name | Short Description | IRP | Frequency | First Date | Last Date | Clean | Availability |
+|---|---|---|---|---|---|---|---|
+| BI_TDB20224 | Bank of Italy table 20224 contains data on loan origination, excluding bad loans, by region and sector in Italy | 14 | Monthly | 2011 | updated with 3 months lag | Clean | Ask |
 
 
 ### electricity <a name='sets-electricity'></a>
 
 | Dataset Name | Short Description | IRP | Frequency | First Date | Last Date | Clean | Availability |
 |---|---|---|---|---|---|---|---|
-| EIA_core_861 | "EIA form 861 contains operational data of the american electricity grid including demand demand forecast and generation by balancing authority." | 14 | Hourly | 2019 | up-to-date | Some missing values | Open |
+| EIA_923 | EIA form 923 contains monthly data on power generation in US, including net generation, fuel receipts and retail sales by state. | 14 | Monthly | 2001 | up-to-date | Some missing values | Ask |
+| EIA_930 | EIA form 930 contains operational data of the american electricity grid including demand, demand forecast and generation by balancing authority. | 14 | Hourly | 2019 | up-to-date | Some missing values | Download parquet from PUDL |
 
 
 ### energy <a name='sets-energy'></a>
 
 | Dataset Name | Short Description | IRP | Frequency | First Date | Last Date | Clean | Availability |
 |---|---|---|---|---|---|---|---|
-| EIA_core_861 | "EIA form 861 contains operational data of the american electricity grid including demand demand forecast and generation by balancing authority." | 14 | Hourly | 2019 | up-to-date | Some missing values | Open |
+| EIA_923 | EIA form 923 contains monthly data on power generation in US, including net generation, fuel receipts and retail sales by state. | 14 | Monthly | 2001 | up-to-date | Some missing values | Ask |
 
 
 ## Datasets by IRP <a name='datasets-by-irp'></a>
@@ -236,5 +255,7 @@ The README is automatically generated, please do not edit it directly.
 
 | Dataset Name | Short Description | Subject(s) | Frequency | First Date | Last Date | Clean | Availability |
 |---|---|---|---|---|---|---|---|
-| EIA_core_861 | "EIA form 861 contains operational data of the american electricity grid including demand demand forecast and generation by balancing authority." | electricity;energy | Hourly | 2019 | up-to-date | Some missing values | Open |
+| BI_TDB20224 | Bank of Italy table 20224 contains data on loan origination, excluding bad loans, by region and sector in Italy | credit;banking | Monthly | 2011 | updated with 3 months lag | Clean | Ask |
+| EIA_923 | EIA form 923 contains monthly data on power generation in US, including net generation, fuel receipts and retail sales by state. | electricity;energy | Monthly | 2001 | up-to-date | Some missing values | Ask |
+| EIA_930 | EIA form 930 contains operational data of the american electricity grid including demand, demand forecast and generation by balancing authority. | electricity | Hourly | 2019 | up-to-date | Some missing values | Download parquet from PUDL |
 <!-- END INVENTORY -->
