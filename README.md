@@ -33,9 +33,10 @@ The README is automatically generated, please do not edit it directly.
   - [IRP 14 ](#sources-14)
 - [Datasets – Full List ](#datasets-full-list)
 - [Datasets by Subject ](#datasets-by-subject)
-  - [including demand ](#sets-including demand)
+  - [electricity ](#sets-electricity)
+  - [energy ](#sets-energy)
 - [Datasets by IRP ](#datasets-by-irp)
-  - [IRP  demand forecast and generation by balancing authority." ](#sets- demand forecast and generation by balancing authority.")
+  - [IRP 14 ](#sets-14)
 
 ---
 
@@ -208,25 +209,32 @@ The README is automatically generated, please do not edit it directly.
 
 | Dataset Name | Short Description | Subject(s) | IRP | Frequency | First Date | Last Date | Clean | Availability |
 |---|---|---|---|---|---|---|---|---|
-| EIA_core_861 | "EIA form 861 contains operational data of the american electricity grid | including demand | demand forecast and generation by balancing authority." | electricity;energy | 14 | Hourly | 2019 | up-to-date |
+| EIA_core_861 | "EIA form 861 contains operational data of the american electricity grid including demand demand forecast and generation by balancing authority." | electricity;energy | 14 | Hourly | 2019 | up-to-date | Some missing values | Open |
 
 
 ## Datasets by Subject <a name='datasets-by-subject'></a>
 
 
-### including demand <a name='sets-including demand'></a>
+### electricity <a name='sets-electricity'></a>
 
 | Dataset Name | Short Description | IRP | Frequency | First Date | Last Date | Clean | Availability |
 |---|---|---|---|---|---|---|---|
-| EIA_core_861 | "EIA form 861 contains operational data of the american electricity grid | demand forecast and generation by balancing authority." | electricity;energy | 14 | Hourly | 2019 | up-to-date |
+| EIA_core_861 | "EIA form 861 contains operational data of the american electricity grid including demand demand forecast and generation by balancing authority." | 14 | Hourly | 2019 | up-to-date | Some missing values | Open |
+
+
+### energy <a name='sets-energy'></a>
+
+| Dataset Name | Short Description | IRP | Frequency | First Date | Last Date | Clean | Availability |
+|---|---|---|---|---|---|---|---|
+| EIA_core_861 | "EIA form 861 contains operational data of the american electricity grid including demand demand forecast and generation by balancing authority." | 14 | Hourly | 2019 | up-to-date | Some missing values | Open |
 
 
 ## Datasets by IRP <a name='datasets-by-irp'></a>
 
 
-### IRP  demand forecast and generation by balancing authority." <a name='sets- demand forecast and generation by balancing authority."'></a>
+### IRP 14 <a name='sets-14'></a>
 
 | Dataset Name | Short Description | Subject(s) | Frequency | First Date | Last Date | Clean | Availability |
 |---|---|---|---|---|---|---|---|
-| EIA_core_861 | "EIA form 861 contains operational data of the american electricity grid | including demand | electricity;energy | 14 | Hourly | 2019 | up-to-date |
+| EIA_core_861 | "EIA form 861 contains operational data of the american electricity grid including demand demand forecast and generation by balancing authority." | electricity;energy | Hourly | 2019 | up-to-date | Some missing values | Open |
 <!-- END INVENTORY -->
