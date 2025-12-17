@@ -49,8 +49,9 @@ The README is automatically generated, please do not edit it directly.
 | Name | Short Description | Subject(s) | IRP | Link | Access | Collection |
 |---|---|---|---|---|---|---|
 | Banca d'Italia | Data from the Italian central bank (monetary, financial, balance of payments, banking system) | finance;banking;macro-economy;credit | 14 | https://infostat.bancaditalia.it/inquiry/home?spyglass/taxo:CUBESET=&ITEMSELEZ=&OPEN=true/&ep:LC=EN&COMM=BANKITALIA&ENV=LIVE&CTX=DIFF&IDX=1&/view:CUBEIDS=&graphMode= | Public | API / open |
-| Binance | Binance's free API allows collection of historical OHLC data for most pairs at high frequency | cryptocurrencies;finance | 14 | https://developers.binance.com/docs/binance-spot-api-docs/README | Public | API / free unllimited key |
+| Binance | Binance's free API allows collection of historical OHLC data for most pairs at high frequency | cryptocurrencies;finance | 14 | https://developers.binance.com/docs/binance-spot-api-docs/README | Public | API / free unlimited key |
 | BRC | Blockchain Research center - data on demand, (cryptocurrencies, financial news, BTC futures...). | blockchain;cryptocurrencies;finance | 14 | https://data.blockchain-research-center.com/ | Private - accessible to IRPs | Email Request |
+| Dune | Dune allows access to on-chain data including multiple pre-made queries about various DeFi projects | blockchain;cryptocurrencies;finance | 14 | https://dune.com/discover/content/favorites | Public | API / free limited key |
 | EDW | Internal Enterprise Data Warehouse integrating core operational and financial systems | credit;operations;finance | 14 | https://eurodw.eu/?lang=it | Private | Database |
 | EIA | U.S. Energy Information Administration – official energy data (generation, consumption, fuel, prices). | energy;electricity;gas | 14 | https://www.eia.gov/opendata/ | Public | API / free unlimited key |
 | EPA | U.S. Environmental Protection Agency – environmental and emissions data relevant to power sector and fuels. | emissions;energy | 14 | https://www.epa.gov/data | Public | API / free unlimited key |
@@ -78,6 +79,7 @@ The README is automatically generated, please do not edit it directly.
 | Name | Short Description | IRP | Link | Access | Collection |
 |---|---|---|---|---|---|
 | BRC | Blockchain Research center - data on demand, (cryptocurrencies, financial news, BTC futures...). | 14 | https://data.blockchain-research-center.com/ | Private - accessible to IRPs | Email Request |
+| Dune | Dune allows access to on-chain data including multiple pre-made queries about various DeFi projects | 14 | https://dune.com/discover/content/favorites | Public | API / free limited key |
 | Thegraph | TheGraph allows free access to curated datastreams on the blockchain - including on-chain data on popular DEFI protocols (uniswap,aave...) | 14 | https://thegraph.com/explorer | Public | API / free limited key - requires base wallet |
 
 
@@ -94,8 +96,9 @@ The README is automatically generated, please do not edit it directly.
 
 | Name | Short Description | IRP | Link | Access | Collection |
 |---|---|---|---|---|---|
-| Binance | Binance's free API allows collection of historical OHLC data for most pairs at high frequency | 14 | https://developers.binance.com/docs/binance-spot-api-docs/README | Public | API / free unllimited key |
+| Binance | Binance's free API allows collection of historical OHLC data for most pairs at high frequency | 14 | https://developers.binance.com/docs/binance-spot-api-docs/README | Public | API / free unlimited key |
 | BRC | Blockchain Research center - data on demand, (cryptocurrencies, financial news, BTC futures...). | 14 | https://data.blockchain-research-center.com/ | Private - accessible to IRPs | Email Request |
+| Dune | Dune allows access to on-chain data including multiple pre-made queries about various DeFi projects | 14 | https://dune.com/discover/content/favorites | Public | API / free limited key |
 | Thegraph | TheGraph allows free access to curated datastreams on the blockchain - including on-chain data on popular DEFI protocols (uniswap,aave...) | 14 | https://thegraph.com/explorer | Public | API / free limited key - requires base wallet |
 
 
@@ -133,8 +136,9 @@ The README is automatically generated, please do not edit it directly.
 | Name | Short Description | IRP | Link | Access | Collection |
 |---|---|---|---|---|---|
 | Banca d'Italia | Data from the Italian central bank (monetary, financial, balance of payments, banking system) | 14 | https://infostat.bancaditalia.it/inquiry/home?spyglass/taxo:CUBESET=&ITEMSELEZ=&OPEN=true/&ep:LC=EN&COMM=BANKITALIA&ENV=LIVE&CTX=DIFF&IDX=1&/view:CUBEIDS=&graphMode= | Public | API / open |
-| Binance | Binance's free API allows collection of historical OHLC data for most pairs at high frequency | 14 | https://developers.binance.com/docs/binance-spot-api-docs/README | Public | API / free unllimited key |
+| Binance | Binance's free API allows collection of historical OHLC data for most pairs at high frequency | 14 | https://developers.binance.com/docs/binance-spot-api-docs/README | Public | API / free unlimited key |
 | BRC | Blockchain Research center - data on demand, (cryptocurrencies, financial news, BTC futures...). | 14 | https://data.blockchain-research-center.com/ | Private - accessible to IRPs | Email Request |
+| Dune | Dune allows access to on-chain data including multiple pre-made queries about various DeFi projects | 14 | https://dune.com/discover/content/favorites | Public | API / free limited key |
 | EDW | Internal Enterprise Data Warehouse integrating core operational and financial systems | 14 | https://eurodw.eu/?lang=it | Private | Database |
 | FRED | Federal Reserve Economic Data - macro-economic time series data on US market | 14 | https://fred.stlouisfed.org | Public | API / free unlimited key |
 
@@ -194,8 +198,9 @@ The README is automatically generated, please do not edit it directly.
 | Name | Short Description | Subject(s) | Link | Access | Collection |
 |---|---|---|---|---|---|
 | Banca d'Italia | Data from the Italian central bank (monetary, financial, balance of payments, banking system) | finance;banking;macro-economy;credit | https://infostat.bancaditalia.it/inquiry/home?spyglass/taxo:CUBESET=&ITEMSELEZ=&OPEN=true/&ep:LC=EN&COMM=BANKITALIA&ENV=LIVE&CTX=DIFF&IDX=1&/view:CUBEIDS=&graphMode= | Public | API / open |
-| Binance | Binance's free API allows collection of historical OHLC data for most pairs at high frequency | cryptocurrencies;finance | https://developers.binance.com/docs/binance-spot-api-docs/README | Public | API / free unllimited key |
+| Binance | Binance's free API allows collection of historical OHLC data for most pairs at high frequency | cryptocurrencies;finance | https://developers.binance.com/docs/binance-spot-api-docs/README | Public | API / free unlimited key |
 | BRC | Blockchain Research center - data on demand, (cryptocurrencies, financial news, BTC futures...). | blockchain;cryptocurrencies;finance | https://data.blockchain-research-center.com/ | Private - accessible to IRPs | Email Request |
+| Dune | Dune allows access to on-chain data including multiple pre-made queries about various DeFi projects | blockchain;cryptocurrencies;finance | https://dune.com/discover/content/favorites | Public | API / free limited key |
 | EDW | Internal Enterprise Data Warehouse integrating core operational and financial systems | credit;operations;finance | https://eurodw.eu/?lang=it | Private | Database |
 | EIA | U.S. Energy Information Administration – official energy data (generation, consumption, fuel, prices). | energy;electricity;gas | https://www.eia.gov/opendata/ | Public | API / free unlimited key |
 | EPA | U.S. Environmental Protection Agency – environmental and emissions data relevant to power sector and fuels. | emissions;energy | https://www.epa.gov/data | Public | API / free unlimited key |
