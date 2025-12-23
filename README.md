@@ -34,7 +34,9 @@ The README is automatically generated, please do not edit it directly.
 - [Datasets – Full List ](#datasets-full-list)
 - [Datasets by Subject ](#datasets-by-subject)
   - [banking ](#sets-banking)
+  - [blockchain ](#sets-blockchain)
   - [credit ](#sets-credit)
+  - [cryptocurrencies ](#sets-cryptocurrencies)
   - [electricity ](#sets-electricity)
   - [energy ](#sets-energy)
   - [environment ](#sets-environment)
@@ -226,6 +228,7 @@ The README is automatically generated, please do not edit it directly.
 | EIA_capacity | Capacity data aggregated from EIA plant-level dataset, infering capacity from nameplate capacity of all operating plants within each balancing authority. | energy;electricity | 14 | Yearly | 2001 | 2025 | Clean | Ask |
 | EIA_outlook | EIA Annual Energy Outlook provides projection of future energy variables including prices,load and generation based on 11 scenarios. The forecast method is open-source | energy;electricity;macro-economy | 14 | Yearly | 2023 | 2050 | Clean | Ask |
 | EPA_CEMS | hourly continuous emissions monitoring system data. CO2,SO2,NOx emissions, plant level granularity. | energy;environment | 14 | Hourly | 1995 | up-to-date | Clean | Download parquet from PUDL |
+| Uniswap_hourly_metrics | hourly set of metrics on largest uniswap stablecoin pools, includes prices and aggregated net per-token swaps at all fee tiers | blockchain;cryptocurrencies | 14 | Hourly | 2021 | up-to-date | Clean | Ask-to be added to BRC dataset |
 
 
 ## Datasets by Subject <a name='datasets-by-subject'></a>
@@ -240,6 +243,13 @@ The README is automatically generated, please do not edit it directly.
 | BI_nace | Bank of Italy data on loan origination, by NACE classification and sector, Italy level only | 14 | Monthly | 2006 | updtated with 3 months lag | Some missing values | Ask |
 
 
+### blockchain <a name='sets-blockchain'></a>
+
+| Dataset Name | Short Description | IRP | Frequency | First Date | Last Date | Clean | Availability |
+|---|---|---|---|---|---|---|---|
+| Uniswap_hourly_metrics | hourly set of metrics on largest uniswap stablecoin pools, includes prices and aggregated net per-token swaps at all fee tiers | 14 | Hourly | 2021 | up-to-date | Clean | Ask-to be added to BRC dataset |
+
+
 ### credit <a name='sets-credit'></a>
 
 | Dataset Name | Short Description | IRP | Frequency | First Date | Last Date | Clean | Availability |
@@ -247,6 +257,13 @@ The README is automatically generated, please do not edit it directly.
 | BI_bad_loans | Bank of Italy table, data on bad loan amounts, by region and sector in Italy | 14 | Monthly | 2011 | updated with 3 months lag | Some missing values | Ask |
 | BI_loan_origination | Bank of Italy table 20224 contains data on loan origination, excluding bad loans, by region and sector in Italy | 14 | Monthly | 2011 | updated with 3 months lag | Clean | Ask |
 | BI_nace | Bank of Italy data on loan origination, by NACE classification and sector, Italy level only | 14 | Monthly | 2006 | updtated with 3 months lag | Some missing values | Ask |
+
+
+### cryptocurrencies <a name='sets-cryptocurrencies'></a>
+
+| Dataset Name | Short Description | IRP | Frequency | First Date | Last Date | Clean | Availability |
+|---|---|---|---|---|---|---|---|
+| Uniswap_hourly_metrics | hourly set of metrics on largest uniswap stablecoin pools, includes prices and aggregated net per-token swaps at all fee tiers | 14 | Hourly | 2021 | up-to-date | Clean | Ask-to be added to BRC dataset |
 
 
 ### electricity <a name='sets-electricity'></a>
@@ -298,4 +315,5 @@ The README is automatically generated, please do not edit it directly.
 | EIA_capacity | Capacity data aggregated from EIA plant-level dataset, infering capacity from nameplate capacity of all operating plants within each balancing authority. | energy;electricity | Yearly | 2001 | 2025 | Clean | Ask |
 | EIA_outlook | EIA Annual Energy Outlook provides projection of future energy variables including prices,load and generation based on 11 scenarios. The forecast method is open-source | energy;electricity;macro-economy | Yearly | 2023 | 2050 | Clean | Ask |
 | EPA_CEMS | hourly continuous emissions monitoring system data. CO2,SO2,NOx emissions, plant level granularity. | energy;environment | Hourly | 1995 | up-to-date | Clean | Download parquet from PUDL |
+| Uniswap_hourly_metrics | hourly set of metrics on largest uniswap stablecoin pools, includes prices and aggregated net per-token swaps at all fee tiers | blockchain;cryptocurrencies | Hourly | 2021 | up-to-date | Clean | Ask-to be added to BRC dataset |
 <!-- END INVENTORY -->
