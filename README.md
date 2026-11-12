@@ -72,6 +72,7 @@ The existing README workflow refreshes only the generated fallback below. Introd
 - [Data Sources by IRP ](#data-sources-by-irp)
   - [IRP 14 ](#sources-14)
   - [IRP 15 ](#sources-15)
+  - [IRP 15;13 ](#sources-15;13)
 - [Datasets – Full List ](#datasets-full-list)
 - [Datasets by Subject ](#datasets-by-subject)
   - [banking ](#sets-banking)
@@ -100,7 +101,7 @@ The existing README workflow refreshes only the generated fallback below. Introd
 | Bloomberg Terminal | Commercial terminal data; used for a direct-lending loan snapshot (current terms only, no history) | credit;finance | 15 | https://www.bloomberg.com/professional/products/bloomberg-terminal/ | Private - institutional licence (cannot be shared) | Terminal / licence |
 | BRC | Blockchain Research center - data on demand, (cryptocurrencies, financial news, BTC futures...). | blockchain;cryptocurrencies;finance | 14 | https://data.blockchain-research-center.com/ | Private - accessible to IRPs | Email Request |
 | Dune | Dune allows access to on-chain data including multiple pre-made queries about various DeFi projects | blockchain;cryptocurrencies;finance | 14 | https://dune.com/discover/content/favorites | Public | API / free limited key |
-| ECB Data Portal | European Central Bank statistics: policy and money-market rates (€STR, EONIA, Euribor), HICP, euro-area yield curves, ECB Survey of Professional Forecasters, ECB Real-Time Database (vintages via includeHistory=true) | macro-economy;finance;banking | 15 | https://data.ecb.europa.eu | Public | API / open (SDMX REST) |
+| ECB Data Portal | European Central Bank statistics: policy and money-market rates (€STR, EONIA, Euribor), HICP, euro-area yield curves, ECB Survey of Professional Forecasters, ECB Real-Time Database (vintages via includeHistory=true) | macro-economy;finance;banking | 15;13 | https://data.ecb.europa.eu | Public | API / open (SDMX REST) |
 | EDW | Internal Enterprise Data Warehouse integrating core operational and financial systems | credit;operations;finance | 14 | https://eurodw.eu/?lang=it | Private | Database |
 | EIA | U.S. Energy Information Administration – official energy data (generation, consumption, fuel, prices). | energy;electricity;gas | 14 | https://www.eia.gov/opendata/ | Public | API / free unlimited key |
 | EPA | U.S. Environmental Protection Agency – environmental and emissions data relevant to power sector and fuels. | emissions;energy | 14 | https://www.epa.gov/data | Public | API / free unlimited key |
@@ -127,7 +128,7 @@ The existing README workflow refreshes only the generated fallback below. Introd
 | Name | Short Description | IRP | Link | Access | Collection |
 |---|---|---|---|---|---|
 | Banca d'Italia | Data from the Italian central bank (monetary, financial, balance of payments, banking system) | 14 | https://infostat.bancaditalia.it/inquiry/home?spyglass/taxo:CUBESET=&ITEMSELEZ=&OPEN=true/&ep:LC=EN&COMM=BANKITALIA&ENV=LIVE&CTX=DIFF&IDX=1&/view:CUBEIDS=&graphMode= | Public | API / open |
-| ECB Data Portal | European Central Bank statistics: policy and money-market rates (€STR, EONIA, Euribor), HICP, euro-area yield curves, ECB Survey of Professional Forecasters, ECB Real-Time Database (vintages via includeHistory=true) | 15 | https://data.ecb.europa.eu | Public | API / open (SDMX REST) |
+| ECB Data Portal | European Central Bank statistics: policy and money-market rates (€STR, EONIA, Euribor), HICP, euro-area yield curves, ECB Survey of Professional Forecasters, ECB Real-Time Database (vintages via includeHistory=true) | 15;13 | https://data.ecb.europa.eu | Public | API / open (SDMX REST) |
 
 
 ### blockchain <a name='sources-blockchain'></a>
@@ -199,7 +200,7 @@ The existing README workflow refreshes only the generated fallback below. Introd
 | Bloomberg Terminal | Commercial terminal data; used for a direct-lending loan snapshot (current terms only, no history) | 15 | https://www.bloomberg.com/professional/products/bloomberg-terminal/ | Private - institutional licence (cannot be shared) | Terminal / licence |
 | BRC | Blockchain Research center - data on demand, (cryptocurrencies, financial news, BTC futures...). | 14 | https://data.blockchain-research-center.com/ | Private - accessible to IRPs | Email Request |
 | Dune | Dune allows access to on-chain data including multiple pre-made queries about various DeFi projects | 14 | https://dune.com/discover/content/favorites | Public | API / free limited key |
-| ECB Data Portal | European Central Bank statistics: policy and money-market rates (€STR, EONIA, Euribor), HICP, euro-area yield curves, ECB Survey of Professional Forecasters, ECB Real-Time Database (vintages via includeHistory=true) | 15 | https://data.ecb.europa.eu | Public | API / open (SDMX REST) |
+| ECB Data Portal | European Central Bank statistics: policy and money-market rates (€STR, EONIA, Euribor), HICP, euro-area yield curves, ECB Survey of Professional Forecasters, ECB Real-Time Database (vintages via includeHistory=true) | 15;13 | https://data.ecb.europa.eu | Public | API / open (SDMX REST) |
 | EDW | Internal Enterprise Data Warehouse integrating core operational and financial systems | 14 | https://eurodw.eu/?lang=it | Private | Database |
 | Fed Board yield curve | Gürkaynak–Sack–Wright US Treasury zero-coupon curve and Svensson parameters, daily since 1961 | 15 | https://www.federalreserve.gov/data/nominal-yield-curve.htm | Public | Direct download (csv) |
 | FRED | Federal Reserve Economic Data - macro-economic time series data on US market | 14 | https://fred.stlouisfed.org | Public | API / free unlimited key |
@@ -220,7 +221,7 @@ The existing README workflow refreshes only the generated fallback below. Introd
 | Name | Short Description | IRP | Link | Access | Collection |
 |---|---|---|---|---|---|
 | Banca d'Italia | Data from the Italian central bank (monetary, financial, balance of payments, banking system) | 14 | https://infostat.bancaditalia.it/inquiry/home?spyglass/taxo:CUBESET=&ITEMSELEZ=&OPEN=true/&ep:LC=EN&COMM=BANKITALIA&ENV=LIVE&CTX=DIFF&IDX=1&/view:CUBEIDS=&graphMode= | Public | API / open |
-| ECB Data Portal | European Central Bank statistics: policy and money-market rates (€STR, EONIA, Euribor), HICP, euro-area yield curves, ECB Survey of Professional Forecasters, ECB Real-Time Database (vintages via includeHistory=true) | 15 | https://data.ecb.europa.eu | Public | API / open (SDMX REST) |
+| ECB Data Portal | European Central Bank statistics: policy and money-market rates (€STR, EONIA, Euribor), HICP, euro-area yield curves, ECB Survey of Professional Forecasters, ECB Real-Time Database (vintages via includeHistory=true) | 15;13 | https://data.ecb.europa.eu | Public | API / open (SDMX REST) |
 | Eurostat | EU-level statistics and macro-economic indicators (economy, population, employment...) | 14 | https://ec.europa.eu/eurostat/web/main/data/database | Public | API / open |
 | Fed Board yield curve | Gürkaynak–Sack–Wright US Treasury zero-coupon curve and Svensson parameters, daily since 1961 | 15 | https://www.federalreserve.gov/data/nominal-yield-curve.htm | Public | Direct download (csv) |
 | FRED | Federal Reserve Economic Data - macro-economic time series data on US market | 14 | https://fred.stlouisfed.org | Public | API / free unlimited key |
@@ -289,13 +290,19 @@ The existing README workflow refreshes only the generated fallback below. Introd
 | Name | Short Description | Subject(s) | Link | Access | Collection |
 |---|---|---|---|---|---|
 | Bloomberg Terminal | Commercial terminal data; used for a direct-lending loan snapshot (current terms only, no history) | credit;finance | https://www.bloomberg.com/professional/products/bloomberg-terminal/ | Private - institutional licence (cannot be shared) | Terminal / licence |
-| ECB Data Portal | European Central Bank statistics: policy and money-market rates (€STR, EONIA, Euribor), HICP, euro-area yield curves, ECB Survey of Professional Forecasters, ECB Real-Time Database (vintages via includeHistory=true) | macro-economy;finance;banking | https://data.ecb.europa.eu | Public | API / open (SDMX REST) |
 | Fed Board yield curve | Gürkaynak–Sack–Wright US Treasury zero-coupon curve and Svensson parameters, daily since 1961 | finance;macro-economy | https://www.federalreserve.gov/data/nominal-yield-curve.htm | Public | Direct download (csv) |
 | Kenneth French Data Library | Daily/monthly Fama–French factors, momentum and industry portfolio returns since 1926 | finance | https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html | Public | Direct download (zip) |
 | Philadelphia Fed RTDSM | Real-Time Data Set for Macroeconomists – every published vintage of US CPI, core CPI, payrolls, industrial production, unemployment and real GDP | macro-economy | https://www.philadelphiafed.org/surveys-and-data/real-time-data-research/real-time-data-set-for-macroeconomists | Public | Direct download (xlsx) |
 | Philadelphia Fed SPF | Survey of Professional Forecasters – quarterly US forecasts of inflation, unemployment, rates and output (human benchmark for forecasting models) | macro-economy | https://www.philadelphiafed.org/surveys-and-data/real-time-data-research/survey-of-professional-forecasters | Public | Direct download (xlsx) |
 | SEC BDC Data Sets | Quarterly XBRL extracts of business development company filings, including the schedule of investments (loan-level private-credit holdings, fair values, rates) | credit;finance;regulation | https://www.sec.gov/data-research/sec-markets-data/bdc-data-sets | Public | Bulk download / quarterly zip (declare a User-Agent with contact email) |
 | SEC Form N-PORT Data Sets | Quarterly fund holdings reports from 2019, with default, arrears and PIK flags on debt holdings | credit;finance;regulation | https://www.sec.gov/data-research/sec-markets-data/form-n-port-data-sets | Public | Bulk download / quarterly zip |
+
+
+### IRP 15;13 <a name='sources-15;13'></a>
+
+| Name | Short Description | Subject(s) | Link | Access | Collection |
+|---|---|---|---|---|---|
+| ECB Data Portal | European Central Bank statistics: policy and money-market rates (€STR, EONIA, Euribor), HICP, euro-area yield curves, ECB Survey of Professional Forecasters, ECB Real-Time Database (vintages via includeHistory=true) | macro-economy;finance;banking | https://data.ecb.europa.eu | Public | API / open (SDMX REST) |
 
 ---
 
