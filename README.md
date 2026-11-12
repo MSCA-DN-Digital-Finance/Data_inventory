@@ -83,6 +83,8 @@ The existing README workflow refreshes only the generated fallback below. Introd
   - [environment ](#sets-environment)
   - [finance ](#sets-finance)
   - [macro-economy ](#sets-macro-economy)
+  - [microstructure ](#sets-microstructure)
+  - [stablecoin ](#sets-stablecoin)
 - [Datasets by IRP ](#datasets-by-irp)
   - [IRP 14 ](#sets-14)
   - [IRP 15 ](#sets-15)
@@ -311,6 +313,7 @@ The existing README workflow refreshes only the generated fallback below. Introd
 | EPA_CEMS | hourly continuous emissions monitoring system data. CO2,SO2,NOx emissions, plant level granularity. | energy;environment | 14 | Hourly | 1995 | up-to-date | Clean | Download parquet from PUDL |
 | Macro_realtime_data_layer | Validated real-time macro data layer for forecasting rates, inflation and unemployment in the US, euro area and Italy: 27 datasets, 1,060 series, real-time vintages (RTDSM, ECB RTD), US and ECB SPF. Data as Parquet files, with code, catalogue and validation report: https://github.com/MSCA-DN-Digital-Finance/macro-realtime-data | macro-economy;finance | 15 | Daily / Monthly / Quarterly | 1854 | up-to-date | Clean (133/133 automated checks incl. exact cross-source matches) | Download Parquet from GitHub (data/public) |
 | SEC_BDC_loan_quarter_panel | Loan × lender × quarter private-credit panel rebuilt from the SEC BDC Data Sets schedules of investments: 194,351 holding-quarters, 128 BDCs; filings kept only if holdings reconcile to reported totals, loans linked across quarters only when unambiguous | credit;finance | 15 | Quarterly | 2022 | 2026 | Clean (verified reconciliation) | Ask |
+| Stablecoin DeFi Dataset | This dataset contains features collected from onchain sources regarding the stability of stablecoins. The main focus is USDT and USDC, the dataset aims to provide a granular and complete view of the microstructure conditions governing the stability of these assets. | stablecoin;blockchain;finance;microstructure | 14 | Hourly | 01-01-2022 | Continuously updated | No missing values, timestamp aligned on ethereum blocks. The hourly observed data is queried on the first block closed in that given hour, this time can vary by around 12 seconds based on the ETH blockchain block time. | bulk download |
 | Uniswap_hourly_metrics | hourly set of metrics on largest uniswap stablecoin pools, includes prices and aggregated net per-token swaps at all fee tiers | blockchain;cryptocurrencies | 14 | Hourly | 2021 | up-to-date | Clean | Ask-to be added to BRC dataset |
 
 
@@ -330,6 +333,7 @@ The existing README workflow refreshes only the generated fallback below. Introd
 
 | Dataset Name | Short Description | IRP | Frequency | First Date | Last Date | Clean | Availability |
 |---|---|---|---|---|---|---|---|
+| Stablecoin DeFi Dataset | This dataset contains features collected from onchain sources regarding the stability of stablecoins. The main focus is USDT and USDC, the dataset aims to provide a granular and complete view of the microstructure conditions governing the stability of these assets. | 14 | Hourly | 01-01-2022 | Continuously updated | No missing values, timestamp aligned on ethereum blocks. The hourly observed data is queried on the first block closed in that given hour, this time can vary by around 12 seconds based on the ETH blockchain block time. | bulk download |
 | Uniswap_hourly_metrics | hourly set of metrics on largest uniswap stablecoin pools, includes prices and aggregated net per-token swaps at all fee tiers | 14 | Hourly | 2021 | up-to-date | Clean | Ask-to be added to BRC dataset |
 
 
@@ -383,6 +387,7 @@ The existing README workflow refreshes only the generated fallback below. Introd
 |---|---|---|---|---|---|---|---|
 | Macro_realtime_data_layer | Validated real-time macro data layer for forecasting rates, inflation and unemployment in the US, euro area and Italy: 27 datasets, 1,060 series, real-time vintages (RTDSM, ECB RTD), US and ECB SPF. Data as Parquet files, with code, catalogue and validation report: https://github.com/MSCA-DN-Digital-Finance/macro-realtime-data | 15 | Daily / Monthly / Quarterly | 1854 | up-to-date | Clean (133/133 automated checks incl. exact cross-source matches) | Download Parquet from GitHub (data/public) |
 | SEC_BDC_loan_quarter_panel | Loan × lender × quarter private-credit panel rebuilt from the SEC BDC Data Sets schedules of investments: 194,351 holding-quarters, 128 BDCs; filings kept only if holdings reconcile to reported totals, loans linked across quarters only when unambiguous | 15 | Quarterly | 2022 | 2026 | Clean (verified reconciliation) | Ask |
+| Stablecoin DeFi Dataset | This dataset contains features collected from onchain sources regarding the stability of stablecoins. The main focus is USDT and USDC, the dataset aims to provide a granular and complete view of the microstructure conditions governing the stability of these assets. | 14 | Hourly | 01-01-2022 | Continuously updated | No missing values, timestamp aligned on ethereum blocks. The hourly observed data is queried on the first block closed in that given hour, this time can vary by around 12 seconds based on the ETH blockchain block time. | bulk download |
 
 
 ### macro-economy <a name='sets-macro-economy'></a>
@@ -391,6 +396,20 @@ The existing README workflow refreshes only the generated fallback below. Introd
 |---|---|---|---|---|---|---|---|
 | EIA_outlook | EIA Annual Energy Outlook provides projection of future energy variables including prices,load and generation based on 11 scenarios. The forecast method is open-source | 14 | Yearly | 2023 | 2050 | Clean | Ask |
 | Macro_realtime_data_layer | Validated real-time macro data layer for forecasting rates, inflation and unemployment in the US, euro area and Italy: 27 datasets, 1,060 series, real-time vintages (RTDSM, ECB RTD), US and ECB SPF. Data as Parquet files, with code, catalogue and validation report: https://github.com/MSCA-DN-Digital-Finance/macro-realtime-data | 15 | Daily / Monthly / Quarterly | 1854 | up-to-date | Clean (133/133 automated checks incl. exact cross-source matches) | Download Parquet from GitHub (data/public) |
+
+
+### microstructure <a name='sets-microstructure'></a>
+
+| Dataset Name | Short Description | IRP | Frequency | First Date | Last Date | Clean | Availability |
+|---|---|---|---|---|---|---|---|
+| Stablecoin DeFi Dataset | This dataset contains features collected from onchain sources regarding the stability of stablecoins. The main focus is USDT and USDC, the dataset aims to provide a granular and complete view of the microstructure conditions governing the stability of these assets. | 14 | Hourly | 01-01-2022 | Continuously updated | No missing values, timestamp aligned on ethereum blocks. The hourly observed data is queried on the first block closed in that given hour, this time can vary by around 12 seconds based on the ETH blockchain block time. | bulk download |
+
+
+### stablecoin <a name='sets-stablecoin'></a>
+
+| Dataset Name | Short Description | IRP | Frequency | First Date | Last Date | Clean | Availability |
+|---|---|---|---|---|---|---|---|
+| Stablecoin DeFi Dataset | This dataset contains features collected from onchain sources regarding the stability of stablecoins. The main focus is USDT and USDC, the dataset aims to provide a granular and complete view of the microstructure conditions governing the stability of these assets. | 14 | Hourly | 01-01-2022 | Continuously updated | No missing values, timestamp aligned on ethereum blocks. The hourly observed data is queried on the first block closed in that given hour, this time can vary by around 12 seconds based on the ETH blockchain block time. | bulk download |
 
 
 ## Datasets by IRP <a name='datasets-by-irp'></a>
@@ -408,6 +427,7 @@ The existing README workflow refreshes only the generated fallback below. Introd
 | EIA_capacity | Capacity data aggregated from EIA plant-level dataset, infering capacity from nameplate capacity of all operating plants within each balancing authority. | energy;electricity | Yearly | 2001 | 2025 | Clean | Ask |
 | EIA_outlook | EIA Annual Energy Outlook provides projection of future energy variables including prices,load and generation based on 11 scenarios. The forecast method is open-source | energy;electricity;macro-economy | Yearly | 2023 | 2050 | Clean | Ask |
 | EPA_CEMS | hourly continuous emissions monitoring system data. CO2,SO2,NOx emissions, plant level granularity. | energy;environment | Hourly | 1995 | up-to-date | Clean | Download parquet from PUDL |
+| Stablecoin DeFi Dataset | This dataset contains features collected from onchain sources regarding the stability of stablecoins. The main focus is USDT and USDC, the dataset aims to provide a granular and complete view of the microstructure conditions governing the stability of these assets. | stablecoin;blockchain;finance;microstructure | Hourly | 01-01-2022 | Continuously updated | No missing values, timestamp aligned on ethereum blocks. The hourly observed data is queried on the first block closed in that given hour, this time can vary by around 12 seconds based on the ETH blockchain block time. | bulk download |
 | Uniswap_hourly_metrics | hourly set of metrics on largest uniswap stablecoin pools, includes prices and aggregated net per-token swaps at all fee tiers | blockchain;cryptocurrencies | Hourly | 2021 | up-to-date | Clean | Ask-to be added to BRC dataset |
 
 
