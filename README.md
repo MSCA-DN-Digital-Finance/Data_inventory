@@ -35,7 +35,7 @@ The workflow validates data, builds and tests every pull request, and deploys on
 
 CSV files remain the canonical data. IDs are stable; names can change. Empty metadata is displayed as **Not yet documented**. Legacy fields remain available for compatibility. Most migrated notes are contributor reports, not newly verified access guarantees. Review dates are set only for specifically checked metadata.
 
-The contribution page prepares a GitHub issue; the contributor reviews and submits it on GitHub. Maintainers then review and import the proposal. It does not write directly to the repository or host credentials. A JSON download and local browser draft support longer or unfinished submissions.
+The contribution page prepares a GitHub issue; the contributor reviews and submits it on GitHub. A maintainer reviews the proposal and adds the `inventory-approved` issue label. The approval workflow automatically validates it, updates the CSV and README, commits to `main`, starts a Pages deployment, and closes the issue with `inventory-applied`. No local commands are needed. The public form does not write directly to the repository or host credentials. A JSON download and local browser draft support longer or unfinished submissions. Automatic approval requires one fenced `json` proposal in the issue body; paste attachment-only JSON into the body before approval. See [maintainer review](CONTRIBUTING.md#maintainer-review) for retries and requirements.
 
 ```sh
 python3 scripts/import_proposal.py /path/to/proposal.json          # validate / dry-run

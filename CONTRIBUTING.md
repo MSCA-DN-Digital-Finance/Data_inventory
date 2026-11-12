@@ -39,7 +39,23 @@ Existing `access`, `availability` and `clean` fields are retained for the genera
 
 Check the evidence and access route before applying a proposal. Confirm that the entry ID matches the intended record. Do not mark a whole entry verified when only one field has been checked: describe the scope in `provenance`. Keep observation coverage separate from the metadata review date. Use immutable versions or DOIs where possible.
 
-Download or extract the JSON object from the issue to a local file, then run:
+### Approve entirely on GitHub
+
+1. Review the JSON proposal in the issue body, including the access conditions and evidence.
+2. Apply the **`inventory-approved`** label to the open issue. You must have repository write, maintain or admin permission. Triage permission is insufficient.
+3. The **Apply approved inventory proposal** workflow validates the proposal, updates the canonical CSV and generated README, commits the change to `main`, requests a Pages deployment, adds **`inventory-applied`**, and closes the issue.
+
+No download, CSV editing or local commands are required. The proposal must be in exactly one fenced `json` code block in the issue body (the website already produces this). For attachment-only proposals, paste the JSON into that code block before approval. Free-text requests need a structured JSON proposal first.
+
+The automation uses the issue body captured when the approval label was applied. If the author changes the body or approval is withdrawn before processing, it stops. Review the corrected proposal, remove `inventory-approved`, and re-add it to approve the new content. Reopening or closing an issue alone does not approve anything.
+
+Check the issue's workflow run in **Actions → Apply approved inventory proposal** if it remains open. Invalid proposals leave the inventory unchanged. Fix the JSON, review it and reapply the label. If a repository configuration or deployment-dispatch error occurs after the CSV commit, fix that problem and rerun the failed workflow; the recorded proposal hash prevents importing the same approved proposal twice. The run summary links to the commit. `inventory-applied` means the change is committed and deployment requested; **Validate and deploy inventory** reports whether the website has finished publishing.
+
+The workflow uses the repository's built-in `GITHUB_TOKEN`, with no personal token or external service required. It explicitly dispatches the Pages workflow because bot commits do not trigger ordinary push workflows. Direct pushes to `main` must be permitted for this workflow; branch protection is never bypassed. Separate approvals retry against the latest `main` if another change is pushed concurrently.
+
+### Optional local import
+
+You can still download or extract the JSON object to a local file and run:
 
 ```sh
 python3 scripts/import_proposal.py /path/to/proposal.json
@@ -51,4 +67,4 @@ python3 update_README.py
 
 The importer validates fields, IDs, source references, URLs and dates before applying. It also refreshes legacy access and quality summaries from the proposal for the README. An update merges supplied fields into the existing record; supplied empty fields intentionally clear values. A new source should be imported before a dataset that references it. It is also fine to edit the CSVs directly with proper CSV quoting, then run the build to validate them.
 
-Review the CSV diff, preview the website, and open a pull request. CI validates the build before deployment. Proposals never trigger automatic commits: external submissions remain under maintainer review.
+For local imports, review the CSV diff, preview the website, and open a pull request. The automated path above commits only after a maintainer has explicitly approved the issue.
