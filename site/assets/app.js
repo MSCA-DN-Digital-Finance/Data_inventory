@@ -42,34 +42,62 @@
   if(document.getElementById('results')) {
     document.getElementById('dataset-total').textContent=data.datasets.length;
     document.getElementById('source-total').textContent=data.sources.length;
-    let kind='all';
+    const kind=document.body.dataset.catalogueKind||'source';
+    const catalogueEntries=entries.filter(r=>r.kind===kind);
     const params=new URLSearchParams(location.search);
+    // Preserve older shared dataset filter links after splitting the catalogues.
+    if(kind==='source'&&params.get('type')==='dataset'){
+      params.delete('type');
+      location.replace('datasets.html'+(params.size?'?'+params.toString():'')+location.hash);
+      return;
+    }
     const fields = ['access','subject','region','irp','format'];
     for(const [field,key] of [['subject','subjects'],['region','region'],['irp','IRP'],['format','formats']]) {
       const select=document.getElementById(`${field}-filter`);
-      const values=[...new Set(entries.flatMap(r=>split(r[key])))].sort((a,b)=>a.localeCompare(b,undefined,{numeric:true}));
+      const values=[...new Set(catalogueEntries.flatMap(r=>split(r[key])))].sort((a,b)=>a.localeCompare(b,undefined,{numeric:true}));
       for(const value of values){const option=document.createElement('option');option.value=value;option.textContent=field==='irp'?`IRP ${value}`:value;select.append(option);}
     }
-    document.querySelectorAll('[data-kind]').forEach(button=>{
-      const k=button.dataset.kind;button.querySelector('span').textContent=k==='all'?entries.length:entries.filter(x=>x.kind===k).length;
-      button.addEventListener('click',()=>{kind=k;render();});
+    const cloud=document.getElementById('subject-cloud');
+    const subjectCounts=new Map();
+    catalogueEntries.forEach(r=>new Set(split(r.subjects)).forEach(subject=>subjectCounts.set(subject,(subjectCounts.get(subject)||0)+1)));
+    const subjects=[...subjectCounts].sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0]));
+    const maxCount=Math.max(1,...subjectCounts.values());
+    cloud.innerHTML=`<button class="subject-chip subject-all" data-subject="" aria-pressed="true">All subjects</button>`+subjects.map(([subject,count])=>`<button class="subject-chip" data-subject="${esc(subject)}" aria-pressed="false" style="--subject-size:${(14+12*Math.sqrt(count/maxCount)).toFixed(1)}px"><span>${esc(subject)}</span><span class="subject-count" aria-label="${count} ${kind==='dataset'?(count===1?'dataset':'datasets'):(count===1?'data source':'data sources')}">${count}</span></button>`).join('');
+    cloud.addEventListener('click',event=>{
+      const button=event.target.closest('[data-subject]');
+      if(!button)return;
+      const selected=document.getElementById('subject-filter');
+      const subject=selected.value===button.dataset.subject?'':button.dataset.subject;
+      reset();selected.value=subject;render();
+      document.getElementById('inventory-filters').classList.remove('mobile-open');
+      document.getElementById('toggle-filters').setAttribute('aria-expanded','false');
+      document.getElementById('catalogue-results').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'});
     });
     for(const field of fields){const el=document.getElementById(`${field}-filter`);if(params.has(field))el.value=params.get(field);el.addEventListener('change',()=>render());}
     const search=document.getElementById('search');search.value=params.get('q')||'';search.addEventListener('input',()=>render());
     const sort=document.getElementById('sort');sort.value=params.get('sort')==='reviewed'?'reviewed':'name';sort.addEventListener('change',()=>render());
-    if(['dataset','source'].includes(params.get('type')))kind=params.get('type');
-    const reset=()=>{kind='all';search.value='';fields.forEach(f=>document.getElementById(`${f}-filter`).value='');sort.value='name';render();};
+    document.getElementById('toggle-filters').addEventListener('click',event=>{
+      const open=document.getElementById('inventory-filters').classList.toggle('mobile-open');
+      event.currentTarget.setAttribute('aria-expanded',String(open));
+    });
+    const reset=()=>{search.value='';fields.forEach(f=>document.getElementById(`${f}-filter`).value='');sort.value='name';render();};
     document.getElementById('reset').addEventListener('click',reset);document.getElementById('empty-reset').addEventListener('click',reset);
     document.addEventListener('keydown',event=>{if(event.key==='/'&&!['INPUT','TEXTAREA','SELECT'].includes(event.target.tagName)&&!detail.open){event.preventDefault();search.focus();}});
     function render() {
       const query=search.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
       const filters=Object.fromEntries(fields.map(f=>[f,document.getElementById(`${f}-filter`).value]));
-      const found=entries.filter(r=>(kind==='all'||r.kind===kind)&&query.every(q=>Object.values(r).join(' ').toLowerCase().includes(q))&&(!filters.access||r.access_category===filters.access)&&(!filters.subject||split(r.subjects).includes(filters.subject))&&(!filters.region||split(r.region).includes(filters.region))&&(!filters.irp||split(r.IRP).includes(filters.irp))&&(!filters.format||split(r.formats).includes(filters.format))).sort((a,b)=>sort.value==='reviewed' ? (b.last_reviewed||'').localeCompare(a.last_reviewed||'')||a.name.localeCompare(b.name):a.name.localeCompare(b.name));
-      document.querySelectorAll('[data-kind]').forEach(b=>{b.classList.toggle('selected',b.dataset.kind===kind);b.setAttribute('aria-pressed',String(b.dataset.kind===kind));});
-      document.getElementById('result-count').textContent=`${found.length} ${found.length===1?'entry':'entries'} found`;
+      const found=catalogueEntries.filter(r=>query.every(q=>Object.values(r).join(' ').toLowerCase().includes(q))&&(!filters.access||r.access_category===filters.access)&&(!filters.subject||split(r.subjects).includes(filters.subject))&&(!filters.region||split(r.region).includes(filters.region))&&(!filters.irp||split(r.IRP).includes(filters.irp))&&(!filters.format||split(r.formats).includes(filters.format))).sort((a,b)=>sort.value==='reviewed' ? (b.last_reviewed||'').localeCompare(a.last_reviewed||'')||a.name.localeCompare(b.name):a.name.localeCompare(b.name));
+      cloud.querySelectorAll('[data-subject]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.subject===filters.subject)));
+      const viewTitle=kind==='dataset'?'Datasets':'Data sources';
+      document.getElementById('list-title').textContent=filters.subject?`${viewTitle}: ${filters.subject}`:kind==='source'?'All data sources':'All datasets';
+      const download=document.getElementById('download-csv');
+      const downloadDatasets=kind==='dataset';
+      download.href=downloadDatasets?'data/datasets.csv':'data/data-sources.csv';
+      download.textContent=downloadDatasets?'Download datasets CSV ↓':'Download sources CSV ↓';
+      document.getElementById('result-count').textContent=`${found.length} ${kind==='source'?(found.length===1?'source':'sources'):kind==='dataset'?(found.length===1?'dataset':'datasets'):(found.length===1?'entry':'entries')}`;
       document.getElementById('empty').hidden=found.length>0;
       document.getElementById('results').innerHTML=found.map(r=>`<article class="entry"><div><div class="entry-top"><span class="entry-type">${r.kind==='dataset'?'RESEARCH DATASET':'DATA SOURCE'}</span><span class="entry-type">${esc(r.region || 'Region not documented')}</span></div><h3><button class="entry-title" data-open="${esc(entryURL(r))}">${esc(r.name)}</button></h3><p>${esc(r.short_description)}</p><div class="tags">${split(r.subjects).map(x=>`<span class="tag">${esc(x)}</span>`).join('')}</div></div><div class="entry-aside">${badge(r)}<div class="entry-fact">${r.kind==='dataset'?`<strong>${esc(r.frequency||'Frequency unknown')}</strong><br>${esc(r.first_date||'?')} → ${esc(r.last_date||'?')}`:`<strong>${esc(r.collection||'Collection not documented')}</strong>`}</div>${r.publication_lag?`<span class="entry-fact">Lag: ${esc(r.publication_lag)}</span>`:''}<button data-open="${esc(entryURL(r))}" aria-label="${esc('View details for '+r.name)}">View research notes ↗</button></div></article>`).join('');
-      const next=new URLSearchParams();if(search.value)next.set('q',search.value);if(kind!=='all')next.set('type',kind);for(const f of fields)if(filters[f])next.set(f,filters[f]);if(sort.value!=='name')next.set('sort',sort.value);
+      const next=new URLSearchParams();if(search.value)next.set('q',search.value);for(const f of fields)if(filters[f])next.set(f,filters[f]);if(sort.value!=='name')next.set('sort',sort.value);
       history.replaceState(null,'',location.pathname+(next.size?'?'+next.toString():'')+location.hash);
     }
     render();route();

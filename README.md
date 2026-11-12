@@ -2,7 +2,7 @@
 
 A research catalogue for the MSCA Digital Finance network: which data is available, how to access it, and what to know before using it.
 
-The website provides search, filters, shareable entry details, related providers, CSV downloads, and a contribution page. Access conditions come first, followed by formats, quality, publication lag, history, revisions and reuse restrictions. The supplied DIGITAL logo is the main brand; the EU funding logo appears in every page footer.
+The homepage lists data sources with a clickable subject cloud. Datasets have their own navigation tab and page. Both catalogues provide search, filters, shareable entry details, related providers and CSV downloads, alongside a contribution page. Access conditions come first, followed by formats, quality, publication lag, history, revisions and reuse restrictions. The supplied DIGITAL logo is the main brand; the EU funding logo appears in every page footer.
 
 ## Run locally
 
