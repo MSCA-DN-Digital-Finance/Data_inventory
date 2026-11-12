@@ -36,3 +36,6 @@
 .results-toolbar{margin-bottom:16px;min-height:32px;border-bottom:1px solid var(--line);padding-bottom:12px}
 .results-toolbar #result-count{font-size:12px;color:var(--muted);margin:0}
 @media(max-width:760px){nav{flex-wrap:wrap;justify-content:flex-start;gap:10px 18px}nav .button{margin-left:auto}}
+
+.header{flex-wrap:wrap}.header nav{flex-wrap:wrap;gap:12px 20px}nav a[aria-current=page]{color:var(--teal)}
+@media(min-width:1101px){.header nav{margin-left:auto}}
