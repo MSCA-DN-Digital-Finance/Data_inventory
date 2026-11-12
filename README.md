@@ -1,14 +1,54 @@
-# MSCA DIGITAL - 🗂 Data Inventory
+# DIGITAL · Research Data Inventory
 
-This repository is meant to host a list of relevant data sources and datasets found and used by IRPs. 
+A research catalogue for the MSCA Digital Finance network: which data is available, how to access it, and what to know before using it.
 
-IRPs are welcome to add their contributions in the following csv files :
+The website provides search, filters, shareable entry details, related providers, CSV downloads, and a contribution page. Access conditions come first, followed by formats, quality, publication lag, history, revisions and reuse restrictions. The supplied DIGITAL logo is the main brand; the EU funding logo appears in every page footer.
 
+## Run locally
 
-- [List of datasets](./data/datasets.csv) 
-- [List of data sources](./data/data-sources.csv)
+Python 3.9+ is the only build dependency.
 
-The README is automatically generated, please do not edit it directly. 
+```sh
+python3 scripts/build_site.py
+python3 -m http.server 8000 --bind 127.0.0.1 --directory _site
+```
+
+Open [the local preview](http://127.0.0.1:8000). Output is generated in `_site/` and is not committed. Relative links work at the GitHub project path and on a custom domain. No external fonts, analytics or client libraries are required.
+
+## Publish on GitHub Pages
+
+1. Push these changes to `main` (or merge a pull request).
+2. In **Settings → Pages → Build and deployment → Source**, choose **GitHub Actions**.
+3. Run **Validate and deploy inventory** from the Actions tab, or push a change to `main`.
+4. The deployment environment reports the actual site URL. With the current repository name and no custom domain, the expected address is https://msca-dn-digital-finance.github.io/Data_inventory/.
+
+The workflow validates data, builds and tests every pull request, and deploys only pushes to `main` or a manual run on `main`. GitHub may require an administrator to enable Pages or approve the `github-pages` environment. See [GitHub’s publishing-source guide](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site) and [custom workflow guide](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).
+
+## Maintain the inventory
+
+- [Sources CSV](data/data-sources.csv): providers and platforms.
+- [Datasets CSV](data/datasets.csv): specific prepared research datasets, extracts and panels.
+- [Contribution and metadata guide](CONTRIBUTING.md): field definitions, evidence standards and importing proposals.
+- `site/`: page templates, CSS and browser behavior.
+- `site/config.json`: repository links and project configuration.
+- `scripts/build_site.py`: CSV validation, generated JSON, no-JavaScript fallback and static packaging.
+
+CSV files remain the canonical data. IDs are stable; names can change. Empty metadata is displayed as **Not yet documented**. Legacy fields remain available for compatibility. Most migrated notes are contributor reports, not newly verified access guarantees. Review dates are set only for specifically checked metadata.
+
+The contribution page prepares a GitHub issue; the contributor reviews and submits it on GitHub. Maintainers then review and import the proposal. It does not write directly to the repository or host credentials. A JSON download and local browser draft support longer or unfinished submissions.
+
+```sh
+python3 scripts/import_proposal.py /path/to/proposal.json          # validate / dry-run
+python3 scripts/import_proposal.py /path/to/proposal.json --write  # apply reviewed change
+python3 scripts/build_site.py
+python3 -m unittest discover -s tests -v
+python3 update_README.py
+```
+
+The existing README workflow refreshes only the generated fallback below. Introductory and maintenance text can be edited directly.
+
+<details>
+<summary>Browse the legacy inventory tables</summary>
 
 <!-- BEGIN INVENTORY -->
 ## Table of Contents
@@ -263,7 +303,7 @@ The README is automatically generated, please do not edit it directly.
 |---|---|---|---|---|---|---|---|---|
 | BI_bad_loans | Bank of Italy table, data on bad loan amounts, by region and sector in Italy | credit;banking | 14 | Monthly | 2011 | updated with 3 months lag | Some missing values | Ask |
 | BI_loan_origination | Bank of Italy table 20224 contains data on loan origination, excluding bad loans, by region and sector in Italy | credit;banking | 14 | Monthly | 2011 | updated with 3 months lag | Clean | Ask |
-| BI_nace | Bank of Italy data on loan origination, by NACE classification and sector, Italy level only | credit;banking | 14 | Monthly | 2006 | updtated with 3 months lag | Some missing values | Ask |
+| BI_nace | Bank of Italy data on loan origination, by NACE classification and sector, Italy level only | credit;banking | 14 | Monthly | 2006 | updated with 3 months lag | Some missing values | Ask |
 | EIA_923 | EIA form 923 contains monthly data on power generation in US, including net generation, fuel receipts and retail sales by state. | electricity;energy | 14 | Monthly | 2001 | up-to-date | Some missing values | Ask |
 | EIA_930 | EIA form 930 contains operational data of the american electricity grid including demand, demand forecast and generation by balancing authority. | electricity | 14 | Hourly | 2019 | up-to-date | Some missing values | Download parquet from PUDL |
 | EIA_capacity | Capacity data aggregated from EIA plant-level dataset, infering capacity from nameplate capacity of all operating plants within each balancing authority. | energy;electricity | 14 | Yearly | 2001 | 2025 | Clean | Ask |
@@ -283,7 +323,7 @@ The README is automatically generated, please do not edit it directly.
 |---|---|---|---|---|---|---|---|
 | BI_bad_loans | Bank of Italy table, data on bad loan amounts, by region and sector in Italy | 14 | Monthly | 2011 | updated with 3 months lag | Some missing values | Ask |
 | BI_loan_origination | Bank of Italy table 20224 contains data on loan origination, excluding bad loans, by region and sector in Italy | 14 | Monthly | 2011 | updated with 3 months lag | Clean | Ask |
-| BI_nace | Bank of Italy data on loan origination, by NACE classification and sector, Italy level only | 14 | Monthly | 2006 | updtated with 3 months lag | Some missing values | Ask |
+| BI_nace | Bank of Italy data on loan origination, by NACE classification and sector, Italy level only | 14 | Monthly | 2006 | updated with 3 months lag | Some missing values | Ask |
 
 
 ### blockchain <a name='sets-blockchain'></a>
@@ -299,7 +339,7 @@ The README is automatically generated, please do not edit it directly.
 |---|---|---|---|---|---|---|---|
 | BI_bad_loans | Bank of Italy table, data on bad loan amounts, by region and sector in Italy | 14 | Monthly | 2011 | updated with 3 months lag | Some missing values | Ask |
 | BI_loan_origination | Bank of Italy table 20224 contains data on loan origination, excluding bad loans, by region and sector in Italy | 14 | Monthly | 2011 | updated with 3 months lag | Clean | Ask |
-| BI_nace | Bank of Italy data on loan origination, by NACE classification and sector, Italy level only | 14 | Monthly | 2006 | updtated with 3 months lag | Some missing values | Ask |
+| BI_nace | Bank of Italy data on loan origination, by NACE classification and sector, Italy level only | 14 | Monthly | 2006 | updated with 3 months lag | Some missing values | Ask |
 | SEC_BDC_loan_quarter_panel | Loan × lender × quarter private-credit panel rebuilt from the SEC BDC Data Sets schedules of investments: 194,351 holding-quarters, 128 BDCs; filings kept only if holdings reconcile to reported totals, loans linked across quarters only when unambiguous | 15 | Quarterly | 2022 | 2026 | Clean (verified reconciliation) | Ask |
 
 
@@ -362,7 +402,7 @@ The README is automatically generated, please do not edit it directly.
 |---|---|---|---|---|---|---|---|
 | BI_bad_loans | Bank of Italy table, data on bad loan amounts, by region and sector in Italy | credit;banking | Monthly | 2011 | updated with 3 months lag | Some missing values | Ask |
 | BI_loan_origination | Bank of Italy table 20224 contains data on loan origination, excluding bad loans, by region and sector in Italy | credit;banking | Monthly | 2011 | updated with 3 months lag | Clean | Ask |
-| BI_nace | Bank of Italy data on loan origination, by NACE classification and sector, Italy level only | credit;banking | Monthly | 2006 | updtated with 3 months lag | Some missing values | Ask |
+| BI_nace | Bank of Italy data on loan origination, by NACE classification and sector, Italy level only | credit;banking | Monthly | 2006 | updated with 3 months lag | Some missing values | Ask |
 | EIA_923 | EIA form 923 contains monthly data on power generation in US, including net generation, fuel receipts and retail sales by state. | electricity;energy | Monthly | 2001 | up-to-date | Some missing values | Ask |
 | EIA_930 | EIA form 930 contains operational data of the american electricity grid including demand, demand forecast and generation by balancing authority. | electricity | Hourly | 2019 | up-to-date | Some missing values | Download parquet from PUDL |
 | EIA_capacity | Capacity data aggregated from EIA plant-level dataset, infering capacity from nameplate capacity of all operating plants within each balancing authority. | energy;electricity | Yearly | 2001 | 2025 | Clean | Ask |
@@ -378,3 +418,5 @@ The README is automatically generated, please do not edit it directly.
 | Macro_realtime_data_layer | Validated real-time macro data layer for forecasting rates, inflation and unemployment in the US, euro area and Italy: 27 datasets, 1,060 series, real-time vintages (RTDSM, ECB RTD), US and ECB SPF. Data as Parquet files, with code, catalogue and validation report: https://github.com/MSCA-DN-Digital-Finance/macro-realtime-data | macro-economy;finance | Daily / Monthly / Quarterly | 1854 | up-to-date | Clean (133/133 automated checks incl. exact cross-source matches) | Download Parquet from GitHub (data/public) |
 | SEC_BDC_loan_quarter_panel | Loan × lender × quarter private-credit panel rebuilt from the SEC BDC Data Sets schedules of investments: 194,351 holding-quarters, 128 BDCs; filings kept only if holdings reconcile to reported totals, loans linked across quarters only when unambiguous | credit;finance | Quarterly | 2022 | 2026 | Clean (verified reconciliation) | Ask |
 <!-- END INVENTORY -->
+
+</details>
