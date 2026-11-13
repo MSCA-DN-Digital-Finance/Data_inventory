@@ -73,6 +73,7 @@ The existing README workflow refreshes only the generated fallback below. Introd
   - [blockchain ](#sources-blockchain)
   - [credit ](#sources-credit)
   - [cryptocurrencies ](#sources-cryptocurrencies)
+  - [economics ](#sources-economics)
   - [electricity ](#sources-electricity)
   - [emissions ](#sources-emissions)
   - [energy ](#sources-energy)
@@ -113,7 +114,7 @@ The existing README workflow refreshes only the generated fallback below. Introd
 |---|---|---|---|---|---|---|
 | Banca d'Italia | Data from the Italian central bank (monetary, financial, balance of payments, banking system) | finance;banking;macro-economy;credit | 14 | https://infostat.bancaditalia.it/inquiry/home?spyglass/taxo:CUBESET=&ITEMSELEZ=&OPEN=true/&ep:LC=EN&COMM=BANKITALIA&ENV=LIVE&CTX=DIFF&IDX=1&/view:CUBEIDS=&graphMode= | Public | API / open |
 | Binance | Binance's free API allows collection of historical OHLC data for most pairs at high frequency | cryptocurrencies;finance | 14 | https://developers.binance.com/docs/binance-spot-api-docs/README | Public | API / free unlimited key |
-| Bloomberg Terminal | Commercial terminal data; used for a direct-lending loan snapshot (current terms only, no history) | credit;finance | 15, 13 | https://www.bloomberg.com/professional/products/bloomberg-terminal/ | Private - institutional licence | Terminal / licence |
+| Bloomberg Terminal | Commercial terminal data; used for a direct-lending loan snapshot (current terms only, no history) | credit;finance;economics | 15, 13 | https://www.bloomberg.com/professional/products/bloomberg-terminal/ | Private - institutional licence | Terminal / licence |
 | BRC | Blockchain Research center - data on demand, (cryptocurrencies, financial news, BTC futures...). | blockchain;cryptocurrencies;finance | 14 | https://data.blockchain-research-center.com/ | Private - accessible to IRPs | Email Request |
 | Dune | Dune allows access to on-chain data including multiple pre-made queries about various DeFi projects | blockchain;cryptocurrencies;finance | 14 | https://dune.com/discover/content/favorites | Public | API / free limited key |
 | ECB Data Portal | European Central Bank statistics: policy and money-market rates (€STR, EONIA, Euribor), HICP, euro-area yield curves, ECB Survey of Professional Forecasters, ECB Real-Time Database (vintages via includeHistory=true) | macro-economy;finance;banking | 15;13 | https://data.ecb.europa.eu | Public | API / open (SDMX REST) |
@@ -175,6 +176,13 @@ The existing README workflow refreshes only the generated fallback below. Introd
 | BRC | Blockchain Research center - data on demand, (cryptocurrencies, financial news, BTC futures...). | 14 | https://data.blockchain-research-center.com/ | Private - accessible to IRPs | Email Request |
 | Dune | Dune allows access to on-chain data including multiple pre-made queries about various DeFi projects | 14 | https://dune.com/discover/content/favorites | Public | API / free limited key |
 | Thegraph | TheGraph allows free access to curated datastreams on the blockchain - including on-chain data on popular DEFI protocols (uniswap,aave...) | 14 | https://thegraph.com/explorer | Public | API / free limited key - requires base wallet |
+
+
+### economics <a name='sources-economics'></a>
+
+| Name | Short Description | IRP | Link | Access | Collection |
+|---|---|---|---|---|---|
+| Bloomberg Terminal | Commercial terminal data; used for a direct-lending loan snapshot (current terms only, no history) | 15, 13 | https://www.bloomberg.com/professional/products/bloomberg-terminal/ | Private - institutional licence | Terminal / licence |
 
 
 ### electricity <a name='sources-electricity'></a>
@@ -316,7 +324,7 @@ The existing README workflow refreshes only the generated fallback below. Introd
 
 | Name | Short Description | Subject(s) | Link | Access | Collection |
 |---|---|---|---|---|---|
-| Bloomberg Terminal | Commercial terminal data; used for a direct-lending loan snapshot (current terms only, no history) | credit;finance | https://www.bloomberg.com/professional/products/bloomberg-terminal/ | Private - institutional licence | Terminal / licence |
+| Bloomberg Terminal | Commercial terminal data; used for a direct-lending loan snapshot (current terms only, no history) | credit;finance;economics | https://www.bloomberg.com/professional/products/bloomberg-terminal/ | Private - institutional licence | Terminal / licence |
 
 
 ### IRP 15;13 <a name='sources-15;13'></a>
