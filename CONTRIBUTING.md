@@ -45,6 +45,8 @@ Check the evidence and access route before applying a proposal. Confirm that the
 2. Apply the **`inventory-approved`** label to the open issue. You must have repository write, maintain or admin permission. Triage permission is insufficient.
 3. The **Apply approved inventory proposal** workflow validates the proposal, updates the canonical CSV and generated README, commits the change to `main`, requests a Pages deployment, adds **`inventory-applied`**, and closes the issue.
 
+After a successful application, a follow-up job publishes a release containing both CSVs and their SHA-256 checksums from the applied commit. An approval that makes no CSV changes does not create a release. If releasing fails after the issue closes, rerun the failed release job in Actions.
+
 No download, CSV editing or local commands are required. The proposal must be in exactly one fenced `json` code block in the issue body (the website already produces this). For attachment-only proposals, paste the JSON into that code block before approval. Free-text requests need a structured JSON proposal first.
 
 The automation uses the issue body captured when the approval label was applied. If the author changes the body or approval is withdrawn before processing, it stops. Review the corrected proposal, remove `inventory-approved`, and re-add it to approve the new content. Reopening or closing an issue alone does not approve anything.

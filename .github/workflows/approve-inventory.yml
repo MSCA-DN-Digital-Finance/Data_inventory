@@ -14,6 +14,8 @@ concurrency:
 jobs:
   apply:
     if: github.event.label.name == 'inventory-approved' && !github.event.issue.pull_request && github.event.issue.state == 'open'
+    outputs:
+      commit: ${{ steps.apply.outputs.commit }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
     permissions:
@@ -36,6 +38,16 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
       - name: Validate approval, apply proposal and request publication
+        id: apply
         env:
           GH_TOKEN: ${{ github.token }}
         run: python scripts/approve_inventory.py
+
+  release:
+    needs: apply
+    if: needs.apply.outputs.commit != ''
+    permissions:
+      contents: write
+    uses: ./.github/workflows/release.yml
+    with:
+      commit: ${{ needs.apply.outputs.commit }}

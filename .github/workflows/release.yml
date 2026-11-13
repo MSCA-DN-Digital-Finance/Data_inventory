@@ -1,0 +1,95 @@
+name: Publish inventory release
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - data/data-sources.csv
+      - data/datasets.csv
+  workflow_dispatch:
+    inputs:
+      commit:
+        description: 'Commit to release (leave blank for the selected main revision)'
+        type: string
+        required: false
+  workflow_call:
+    inputs:
+      commit:
+        description: 'Exact commit produced by the approval workflow'
+        type: string
+        required: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: inventory-release-${{ inputs.commit || github.sha }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ inputs.commit || github.sha }}
+          fetch-depth: 0
+      - name: Validate the snapshot
+        id: snapshot
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          set -euo pipefail
+          git fetch origin main
+          git merge-base --is-ancestor HEAD origin/main
+          if [[ "$EVENT_NAME" == issues ]] && git diff --quiet HEAD^ HEAD -- data/data-sources.csv data/datasets.csv; then
+            echo 'The approved proposal made no CSV changes; no release needed.'
+            exit 0
+          fi
+          python3 scripts/build_site.py
+          snapshot_sha="$(git rev-parse HEAD)"
+          snapshot_date="$(git show -s --format=%cs HEAD)"
+          echo "commit=$snapshot_sha" >> "$GITHUB_OUTPUT"
+          echo "tag=inventory-${snapshot_date}-${snapshot_sha:0:12}" >> "$GITHUB_OUTPUT"
+      - name: Publish both CSVs
+        if: steps.snapshot.outputs.commit != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          SNAPSHOT_SHA: ${{ steps.snapshot.outputs.commit }}
+          RELEASE_TAG: ${{ steps.snapshot.outputs.tag }}
+        run: |
+          set -euo pipefail
+          release_state="$(gh release view "$RELEASE_TAG" --json isDraft --jq '.isDraft' 2>/dev/null || true)"
+          if [[ "$release_state" == false ]]; then
+            echo 'This snapshot is already published; leaving its assets unchanged.'
+            gh release view "$RELEASE_TAG" --json url --jq '.url' >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          assets_dir="$RUNNER_TEMP/inventory-release"
+          mkdir -p "$assets_dir"
+          cp data/data-sources.csv data/datasets.csv "$assets_dir/"
+          (cd "$assets_dir" && sha256sum data-sources.csv datasets.csv > SHA256SUMS.txt)
+          notes_file="$RUNNER_TEMP/inventory-release-notes.md"
+          cat > "$notes_file" <<EOF_NOTES
+          Inventory snapshot from commit [$SNAPSHOT_SHA](https://github.com/$GH_REPO/commit/$SNAPSHOT_SHA).
+
+          Both CSV files come from this exact revision. SHA256SUMS.txt contains their SHA-256 checksums.
+          EOF_NOTES
+          if [[ "$release_state" != true ]]; then
+            gh release create "$RELEASE_TAG" --draft --target "$SNAPSHOT_SHA" \
+              --title "$RELEASE_TAG" --notes-file "$notes_file"
+          fi
+          # Only drafts are resumed; published release assets are never overwritten.
+          gh release upload "$RELEASE_TAG" "$assets_dir/data-sources.csv" \
+            "$assets_dir/datasets.csv" "$assets_dir/SHA256SUMS.txt" --clobber
+          git fetch origin main
+          latest_option='--latest=false'
+          if git diff --quiet HEAD origin/main -- data/data-sources.csv data/datasets.csv; then
+            latest_option='--latest'
+          fi
+          gh release edit "$RELEASE_TAG" --draft=false "$latest_option"
+          gh release view "$RELEASE_TAG" --json url --jq '.url' >> "$GITHUB_STEP_SUMMARY"

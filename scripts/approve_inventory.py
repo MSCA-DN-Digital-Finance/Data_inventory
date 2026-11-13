@@ -133,7 +133,10 @@ if __name__ == '__main__':
     if os.environ.get('GITHUB_ACTIONS') != 'true' or os.environ.get('GITHUB_EVENT_NAME') != 'issues':
         raise SystemExit('Run this script only through the issue approval workflow; use import_proposal.py for local changes.')
     try:
-        approve(json.loads(Path(os.environ['GITHUB_EVENT_PATH']).read_text()), os.environ['GITHUB_REPOSITORY'], os.environ['GITHUB_ACTOR'])
+        commit = approve(json.loads(Path(os.environ['GITHUB_EVENT_PATH']).read_text()), os.environ['GITHUB_REPOSITORY'], os.environ['GITHUB_ACTOR'])
+        if os.environ.get('GITHUB_OUTPUT'):
+            with open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8') as output:
+                output.write(f'commit={commit}\n')
     except (ValueError, KeyError, json.JSONDecodeError) as exc:
         raise SystemExit(str(exc))
     except subprocess.CalledProcessError as exc:

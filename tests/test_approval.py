@@ -100,6 +100,16 @@ class ApprovalIntegrationTests(unittest.TestCase):
         self.assertEqual(approval.approve(event_for(), REPOSITORY, 'maintainer'), commit)
         self.assertEqual(self.git('rev-list', '--count', 'main'), count)
 
+    def test_retry_returns_applied_commit_after_main_moves(self):
+        applied = approval.approve(event_for(), REPOSITORY, 'maintainer')
+        (self.root / 'later-note.txt').write_text('A later unrelated change')
+        self.git('add', 'later-note.txt'); self.git('commit', '-m', 'Later change')
+        self.git('push', 'origin', 'main')
+        latest = self.git('rev-parse', 'origin/main')
+        self.assertNotEqual(applied, latest)
+        self.assertEqual(approval.approve(event_for(), REPOSITORY, 'maintainer'), applied)
+        self.assertEqual(self.git('rev-parse', 'origin/main'), latest)
+
     def test_invalid_proposal_does_not_push_or_close(self):
         proposal = copy.deepcopy(PROPOSAL); proposal['record']['link'] = 'javascript:alert(1)'
         event = event_for(proposal); self.current = copy.deepcopy(event['issue'])

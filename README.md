@@ -24,6 +24,12 @@ Open [the local preview](http://127.0.0.1:8000). Output is generated in `_site/`
 
 The workflow validates data, builds and tests every pull request, and deploys only pushes to `main` or a manual run on `main`. GitHub may require an administrator to enable Pages or approve the `github-pages` environment. See [GitHub’s publishing-source guide](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site) and [custom workflow guide](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).
 
+## CSV releases
+
+[Inventory releases](https://github.com/MSCA-DN-Digital-Finance/Data_inventory/releases) provide versioned downloads of **both** `data-sources.csv` and `datasets.csv`, plus `SHA256SUMS.txt`. The `Publish inventory release` workflow runs after an approved proposal changes a CSV, for direct CSV pushes to `main`, or manually from Actions. Tags use `inventory-YYYY-MM-DD-<commit SHA prefix>` and release notes link to the exact source commit.
+
+Approval-triggered releases use the applied commit, even if other changes reach `main` before the release runs. Approval no-ops are skipped. Reruns resume incomplete drafts or leave an already published snapshot unchanged. A manual run can create a snapshot of the current revision or a selected commit already on `main`. Releases never alter the CSVs or force-move tags.
+
 ## Maintain the inventory
 
 - [Sources CSV](data/data-sources.csv): providers and platforms.
