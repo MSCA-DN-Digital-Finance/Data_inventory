@@ -7,6 +7,7 @@ from pathlib import Path
 import re
 import shutil
 from urllib.parse import urlsplit
+from directory import enrich, load as load_directory
 
 ROOT = Path(__file__).resolve().parents[1]
 CATEGORIES = {'public', 'request', 'institutional', 'restricted', 'unknown'}
@@ -61,16 +62,26 @@ def inventory(root=None):
 
 def build():
     data = inventory()
+    projects = load_directory(ROOT)
+    data = {key: [enrich(row, projects, 'IRP') for row in rows] for key, rows in data.items()}
     out = ROOT / '_site'
     if out.exists():
         shutil.rmtree(out)
     shutil.copytree(ROOT / 'site', out, ignore=shutil.ignore_patterns('config.json'))
     config = json.loads((ROOT / 'site/config.json').read_text())
-    payload = json.dumps({**data, 'config': config}, ensure_ascii=False).replace('<', '\\u003c')
+    payload = json.dumps({**data, 'people': projects, 'config': config}, ensure_ascii=False).replace('<', '\\u003c')
     fallback = ''.join(f'<li><a href="{html.escape(r.get("link") or config["repository"], quote=True)}">{html.escape(r.get("name") or r["dataset_name"])}</a> — {html.escape(r["access_notes"])}</li>' for r in data['sources'] + data['datasets'])
     for page in out.glob('*.html'):
         page.write_text(page.read_text().replace('<!-- INVENTORY_DATA -->', f'<script type="application/json" id="inventory-data">{payload}</script>').replace('<!-- FALLBACK -->', fallback), encoding='utf-8')
     shutil.copytree(ROOT / 'data', out / 'data')
+    for kind, filename in FILES.items():
+        records = data['sources' if kind == 'source' else 'datasets']
+        with (ROOT / 'data' / filename).open(encoding='utf-8', newline='') as source:
+            fields = csv.DictReader(source).fieldnames
+        fields += [field for field in ['irp_titles', 'researcher_names'] if field not in fields]
+        with (out / 'data' / filename).open('w', encoding='utf-8', newline='') as output:
+            writer = csv.DictWriter(output, fieldnames=fields, lineterminator='\n')
+            writer.writeheader(); writer.writerows(records)
     (out / 'data/inventory.json').write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n')
     shutil.copy2(ROOT / 'logo-nobackground-5000.png', out / 'assets/digital-logo.png')
     shutil.copy2(ROOT / 'EU-logo(2).png', out / 'assets/eu-funded.png')

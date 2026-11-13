@@ -1,0 +1,49 @@
+name: Sync shared IRP directory
+on:
+  schedule:
+    - cron: '43 5 * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: directory-sync
+  cancel-in-progress: false
+jobs:
+  sync:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+      actions: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Configure commit identity
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+      - name: Refresh dictionary and validate catalogues
+        run: |
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git reset --hard origin/main
+            python scripts/directory.py --sync
+            python scripts/build_site.py
+            python -m unittest discover -s tests -v
+            git add -- data/people.json
+            if git diff --cached --quiet; then exit 0; fi
+            git commit -m 'chore: sync shared IRP directory'
+            if git push origin HEAD:main; then exit 0; fi
+          done
+          echo 'Directory push failed. Check branch rules and rerun.' >&2
+          exit 1
+      - name: Request Pages deployment
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run pages.yml --ref main
