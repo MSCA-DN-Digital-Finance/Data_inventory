@@ -6,6 +6,8 @@ The homepage lists data sources with a clickable subject cloud. Datasets have th
 
 ## Shared people and IRP profiles
 
+The ecosystem's **Open Software** page indexes research code, linked papers, languages, software archives and data availability notes. It shares this catalogue's candidate/IRP dictionary and appears in the main navigation.
+
 The **Doctoral candidates & IRPs** navigation opens the organization hub's project directory. `data/people.json` is a validated snapshot of its [canonical dictionary](https://github.com/MSCA-DN-Digital-Finance/MSCA-DN-Digital-Finance.github.io/blob/main/data/people.json), sourced from the network website. Builds resolve project titles and candidate names from each record's `IRP` numbers. These fields appear in details, filters, the `data/inventory.json` feed and downloadable CSVs; legacy comma-separated IRP lists are normalized to semicolons in exports. Records link directly to their IRP profiles. Contribution forms suggest the same known IRPs.
 
 **Sync shared IRP directory** refreshes the snapshot daily at **05:43 UTC**, validates the catalogue, commits changed dictionary data and dispatches Pages. It can also be run manually in Actions. It uses the automatic `GITHUB_TOKEN`; no personal token or cross-repository write permission is needed. The hub's canonical dictionary must be merged into its `main` branch first, and repository branch rules must permit the bot's commits. Failed dictionary imports preserve the previous snapshot. For a local refresh, run `python3 scripts/directory.py --sync`.
